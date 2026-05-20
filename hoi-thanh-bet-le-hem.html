@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hội Thánh Bết Lê Hem – Phúc Âm Ngũ Tuần Việt Nam</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8CB7A;
+      --gold-pale: #F5EDD6;
+      --navy: #0E1E3A;
+      --navy-mid: #1A3060;
+      --cream: #FAF7F2;
+      --white: #FFFFFF;
+      --text: #2C2C2C;
+      --text-light: #6B6B6B;
+      --border: rgba(201, 168, 76, 0.25);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 70px;
+      background: rgba(14, 30, 58, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background .3s;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--navy);
+    }
+
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .nav-logo-text span {
+      color: var(--gold-light);
+      display: block;
+      font-size: .75rem;
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, .78);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: color .2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: .3s;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(to bottom, rgba(14, 30, 58, .82) 0%, rgba(14, 30, 58, .55) 50%, rgba(14, 30, 58, .88) 100%),
+        url('image/main.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, rgba(201, 168, 76, .08) 0%, transparent 70%);
+    }
+
+    .hero-cross {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: .04;
+      font-size: 60vw;
+      color: var(--gold);
+      user-select: none;
+      pointer-events: none;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-radius: 40px;
+      margin-bottom: 28px;
+      animation: fadeUp .8s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      color: var(--white);
+      line-height: 1.08;
+      margin-bottom: 12px;
+      animation: fadeUp .8s .15s ease both;
+    }
+
+    .hero-title em {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: rgba(255, 255, 255, .72);
+      font-weight: 300;
+      letter-spacing: .06em;
+      margin-bottom: 40px;
+      animation: fadeUp .8s .3s ease both;
+    }
+
+    .hero-verse {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--gold-pale);
+      font-size: 1.05rem;
+      margin-bottom: 48px;
+      opacity: .9;
+      animation: fadeUp .8s .45s ease both;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--navy);
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: .9rem;
+      letter-spacing: .05em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform .2s, box-shadow .2s;
+      animation: fadeUp .8s .6s ease both;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(201, 168, 76, .35);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255, 255, 255, .4);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    /* ─── SECTION COMMON ─── */
+    section {
+      padding: 96px 5%;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-label {
+      display: inline-block;
+      color: var(--gold);
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .section-label::before,
+    .section-label::after {
+      content: '─';
+      margin: 0 10px;
+      opacity: .5;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), var(--gold-light));
+      margin: 20px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ─── GIỚI THIỆU ─── */
+    #gioi-thieu {
+      background: var(--white);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .intro-img-wrap {
+      position: relative;
+    }
+
+    .intro-img-wrap::before {
+      content: '';
+      position: absolute;
+      top: -16px;
+      left: -16px;
+      right: 16px;
+      bottom: 16px;
+      border: 2px solid var(--gold);
+      border-radius: 4px;
+      z-index: 0;
+    }
+
+    .intro-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 24px 60px rgba(14, 30, 58, .18);
+    }
+
+    .intro-img-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      z-index: 2;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--navy);
+      border-radius: 50%;
+      width: 90px;
+      height: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: .65rem;
+      text-align: center;
+      line-height: 1.3;
+      font-weight: 700;
+      padding: 8px;
+      box-shadow: 0 8px 24px rgba(201, 168, 76, .35);
+    }
+
+    .intro-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+
+    .intro-text p {
+      font-size: .95rem;
+      line-height: 1.85;
+      color: var(--text-light);
+      margin-bottom: 18px;
+    }
+
+    .intro-pillars {
+      display: flex;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .pillar {
+      flex: 1;
+      text-align: center;
+      padding: 20px 12px;
+      background: var(--cream);
+      border-radius: 8px;
+      border-top: 3px solid var(--gold);
+    }
+
+    .pillar-icon {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .pillar-label {
+      font-size: .78rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .pillar-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    /* ─── GIỜ THỜ PHƯỢNG ─── */
+    #gio-tho-phuong {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #gio-tho-phuong::before {
+      content: '✝';
+      position: absolute;
+      right: -2%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 50vw;
+      opacity: .025;
+      color: var(--gold);
+      font-family: serif;
+      line-height: 1;
+    }
+
+    #gio-tho-phuong .section-title {
+      color: var(--white);
+    }
+
+    #gio-tho-phuong .section-label {
+      color: var(--gold-light);
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .schedule-card {
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(201, 168, 76, .2);
+      border-radius: 12px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: transform .2s, border-color .2s, background .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .schedule-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      background: rgba(201, 168, 76, .07);
+    }
+
+    .schedule-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--gold), var(--gold-light));
+      opacity: 0;
+      transition: opacity .2s;
+    }
+
+    .schedule-card:hover::before {
+      opacity: 1;
+    }
+
+    .schedule-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+
+    .schedule-name {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+
+    .schedule-day {
+      color: var(--gold-light);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .schedule-time {
+      color: rgba(255, 255, 255, .6);
+      font-size: .9rem;
+    }
+
+    .schedule-note {
+      color: rgba(255, 255, 255, .38);
+      font-size: .78rem;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    /* ─── BAN NGÀNH ─── */
+    #ban-nganh {
+      background: var(--cream);
+    }
+
+    .ministry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+      justify-items: center;
+    }
+
+    .ministry-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 36px 24px;
+      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(14, 30, 58, .06);
+      transition: transform .2s, box-shadow .2s;
+      max-width: 340px; width: 100%;
+    }
+
+    .ministry-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(14, 30, 58, .12);
+    }
+
+    .ministry-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-pale), #FFF8E8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 20px;
+      border: 2px solid rgba(201, 168, 76, .3);
+    }
+
+    .ministry-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .ministry-desc {
+      font-size: .83rem;
+      line-height: 1.7;
+      color: var(--text-light);
+    }
+
+    /* ─── LIÊN HỆ ─── */
+    #lien-he {
+      background: var(--white);
+    }
+
+    .contact-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 32px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      align-items: flex-start;
+    }
+
+    .contact-item-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--navy);
+    }
+
+    .contact-item-text strong {
+      display: block;
+      font-size: .82rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 4px;
+    }
+
+    .contact-item-text span {
+      font-size: .93rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .contact-form {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 40px;
+      border: 1px solid var(--border);
+    }
+
+    .contact-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: .8rem;
+      color: var(--text-light);
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid rgba(14, 30, 58, .15);
+      border-radius: 8px;
+      background: var(--white);
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: .9rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      color: var(--gold-light);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-weight: 600;
+      font-size: .9rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(14, 30, 58, .22);
+    }
+
+    .map-placeholder {
+      width: 100%;
+      height: 220px;
+      margin-top: 32px;
+      background: linear-gradient(135deg, var(--navy-mid), var(--navy));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: opacity .2s;
+      text-decoration: none;
+    }
+
+    .map-placeholder:hover {
+      opacity: .85;
+    }
+
+    .map-placeholder span {
+      color: rgba(255, 255, 255, .5);
+      font-size: .82rem;
+    }
+
+    .map-placeholder .map-icon {
+      font-size: 2rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(201, 168, 76, .15);
+      padding: 48px 5% 32px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo em {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .footer-tagline {
+      color: rgba(255, 255, 255, .4);
+      font-size: .83rem;
+      margin-bottom: 28px;
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, .5);
+      text-decoration: none;
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-copy {
+      color: rgba(255, 255, 255, .25);
+      font-size: .75rem;
+    }
+
+    .footer-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 28px;
+      opacity: .4;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(8px);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+
+      .intro-grid,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .intro-img-wrap {
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .intro-pillars {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--navy);
+        padding: 20px 5%;
+        gap: 16px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 560px) {
+      section {
+        padding: 72px 5%;
+      }
+
+      .schedule-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ministry-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .tb-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 28px 32px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(14,30,58,.06);
+  border-left: 4px solid var(--gold);
+}
+.tb-badge {
+  display: inline-block;
+  background: var(--gold-pale);
+  color: #8a6a10;
+  font-size: .7rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px;
+  margin-bottom: 12px;
+}
+.tb-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; color: var(--navy);
+  margin-bottom: 16px;
+}
+.tb-rows { display: flex; flex-direction: column; gap: 10px; }
+.tb-row { display: flex; align-items: flex-start; gap: 10px; font-size: .88rem; color: var(--text); line-height: 1.6; }
+.tb-icon { flex-shrink: 0; width: 20px; }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">
+      <div class="nav-logo-icon">✝</div>
+      <div class="nav-logo-text">
+        Hội Thánh Bết Lê Hem
+        <span>Phúc Âm Ngũ Tuần Việt Nam</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#gioi-thieu">Giới Thiệu</a></li>
+      <li><a href="#gio-tho-phuong">Giờ Thờ Phượng</a></li>
+      <li><a href="#ban-nganh">Ban Ngành</a></li>
+      <li><a href="#lien-he">Liên Hệ</a></li>
+    </ul>
+    <div class="nav-toggle" id="navToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-cross">✝</div>
+    <div class="hero-content">
+      <div class="hero-badge">Hội Thánh Phúc Âm Ngũ Tuần Việt Nam</div>
+      <h1 class="hero-title">Hội Thánh<br><em>Bết Lê Hem</em></h1>
+      <p class="hero-sub">Nơi Đức Chúa Trời Ngự Trị • Nơi Tình Yêu Thương Chan Hòa</p>
+      <p class="hero-verse">"Vì một con trẻ sanh cho chúng ta, tức là Con trai ban cho chúng ta"<br>— Ê-sai 9:6</p>
+      <a href="#gioi-thieu" class="hero-cta">✦ Khám Phá Hội Thánh</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span>Cuộn xuống</span>
+    </div>
+  </section>
+
+  <!-- GIỚI THIỆU -->
+  <section id="gioi-thieu">
+    <div class="section-header reveal">
+      <div class="section-label">Về Chúng Tôi</div>
+      <h2 class="section-title">Giới Thiệu & Lịch Sử</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="intro-grid">
+      <div class="intro-img-wrap reveal">
+        <img class="intro-img" src="image/main1.jpg" alt="Hội Thánh Bết Lê Hem" />
+        <div class="intro-img-badge">Phúc Âm<br>Ngũ Tuần<br>✝</div>
+      </div>
+      <div class="intro-text reveal">
+        <h3>Chào Mừng Đến Bết Lê Hem</h3>
+        <p>
+          Hội Thánh Bết Lê Hem là một hội thánh thuộc Hội Thánh Phúc Âm Ngũ Tuần Việt Nam — một trong những phong trào
+          thuộc linh lớn mạnh và sốt sắng tại Việt Nam. Chúng tôi tin vào sự cứu rỗi qua Chúa Giê-su Christ, sự báp-tem
+          bằng Đức Thánh Linh và quyền năng của lời Kinh Thánh.
+        </p>
+        <p>
+          Được thành lập với tầm nhìn xây dựng một cộng đồng đức tin vững mạnh, hội thánh chúng tôi không ngừng phát
+          triển trong tình yêu thương, lời cầu nguyện và sự phục vụ. Mỗi người đến đây đều được chào đón như người trong
+          gia đình.
+        </p>
+        <p>
+          Chúng tôi cam kết rao truyền Phúc Âm, nuôi dưỡng đức tin, chăm sóc cộng đồng và đào tạo thế hệ môn đồ mới để
+          tiếp tục sứ mệnh của Đấng Christ.
+        </p>
+        <div class="intro-pillars">
+          <div class="pillar">
+            <div class="pillar-icon">📖</div>
+            <div class="pillar-value">Kinh Thánh</div>
+            <div class="pillar-label">Nền Tảng</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🙏</div>
+            <div class="pillar-value">Cầu Nguyện</div>
+            <div class="pillar-label">Sức Mạnh</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🕊️</div>
+            <div class="pillar-value">Ngũ Tuần</div>
+            <div class="pillar-label">Đức Thánh Linh</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIỜ THỜ PHƯỢNG -->
+  <section id="gio-tho-phuong">
+    <div class="section-header reveal">
+      <div class="section-label" style="color:var(--gold-light);">Lịch Nhóm Họp</div>
+      <h2 class="section-title">Giờ Thờ Phượng</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="schedule-grid">
+      <div class="schedule-card reveal">
+        <div class="schedule-icon">☀️</div>
+        <div class="schedule-name">Chủ Nhật</div>
+        <div class="schedule-day">Mỗi Chủ Nhật</div>
+        <div class="schedule-time">8:00 – 10:30</div>
+        <div class="schedule-note">Thờ phượng chính – Có lớp thiếu nhi</div>
+      </div>
+      <div class="schedule-card reveal">
+        <div class="schedule-icon">📖</div>
+        <div class="schedule-name">Học Kinh Thánh</div>
+        <div class="schedule-day">Thứ hai đến thứ Sáu</div>
+        <div class="schedule-time">20:00 – 20:30 </div>
+        <div class="schedule-note">Giữa tuần – Nghiên cứu Lời Chúa</div>
+      </div>
+      <div class="schedule-card reveal">
+        <div class="schedule-icon">🙏</div>
+        <div class="schedule-name">Buổi cầu nguyện</div>
+        <div class="schedule-day">Thứ Bảy</div>
+        <div class="schedule-time">8:30 – 10:00 </div>
+        <div class="schedule-note">Cầu nguyện chung</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAN NGÀNH -->
+  <section id="ban-nganh">
+    <div class="section-header reveal">
+      <div class="section-label">Tổ Chức</div>
+      <h2 class="section-title">Ban Ngành & Đoàn Thể</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="ministry-grid">
+      <div class="ministry-card reveal">
+        <div class="ministry-icon-wrap">🎵</div>
+        <div class="ministry-name">Hội Thánh Bết Lê Hem</div>
+        <img src="image/ban-tho-phuong.jpg" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:14px;">
+        <p style="margin-top:10px;font-size:.8rem;color:#6B6B6B;">👤 <strong style="color:#0E1E3A;">Mục sư Trần Thị Giao</strong> — Quản nhiệm</p>
+        <p style="margin-top:10px;font-size:.8rem;color:#6B6B6B;">👤 <strong style="color:#0E1E3A;">Phan Đức Hậu</strong> — Thư ký</p>
+        <p style="margin-top:10px;font-size:.8rem;color:#6B6B6B;">👤 <strong style="color:#0E1E3A;">Cô Nga</strong> — Thủ quỹ</p>
+        </div>
+      <div class="ministry-card reveal">
+        <div class="ministry-icon-wrap">🎵</div>
+        <div class="ministry-name">Ban Thờ Phượng</div>
+        <img src="image/ban-tho-phuong.jpg" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:14px;">
+        <p style="margin-top:10px;font-size:.8rem;color:#6B6B6B;">👤 <strong style="color:#0E1E3A;">Nguyễn Văn A</strong> — Trưởng ban</p>
+        <div class="ministry-desc">Dâng lên Đức Chúa Trời những bài ca ngợi khen qua âm nhạc và thờ phượng sốt sắng.
+        </div>
+      </div>
+      <div class="ministry-card reveal">
+        <div class="ministry-icon-wrap">👶</div>
+        <div class="ministry-name">Trường Thiếu Nhi</div>
+        <img src="image/ban-tho-phuong.jpg" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:14px;">
+        <p style="margin-top:10px;font-size:.8rem;color:#6B6B6B;">👤 <strong style="color:#0E1E3A;">Nguyễn Văn A</strong> — Trưởng ban</p>
+        <div class="ministry-desc">Dạy dỗ và nuôi dưỡng đức tin cho các em nhỏ qua Kinh Thánh và hoạt động sáng tạo.
+        </div>
+      </div>
+      <div class="ministry-card reveal">
+        <div class="ministry-icon-wrap">🌟</div>
+        <div class="ministry-name">Ban Thanh Thiếu Niên</div>
+        <img src="image/ban-tho-phuong.jpg" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:14px;">
+        <p style="margin-top:10px;font-size:.8rem;color:#6B6B6B;">👤 <strong style="color:#0E1E3A;">Nguyễn Văn A</strong> — Trưởng ban</p>
+        <div class="ministry-desc">Trang bị và hướng dẫn thế hệ trẻ sống đẹp lòng Chúa trong thế giới hiện đại.</div>
+      </div>
+      <div class="ministry-card reveal">
+        <div class="ministry-icon-wrap">👩</div>
+        <div class="ministry-name">Ban Phụ Nữ</div>
+        <img src="image/ban-tho-phuong.jpg" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:14px;">
+        <p style="margin-top:10px;font-size:.8rem;color:#6B6B6B;">👤 <strong style="color:#0E1E3A;">Nguyễn Văn A</strong> — Trưởng ban</p>
+        <div class="ministry-desc">Xây dựng và khích lệ chị em phụ nữ trong đức tin, gia đình và cộng đồng.</div>
+      </div>
+      <div class="ministry-card reveal">
+        <div class="ministry-icon-wrap">👨</div>
+        <div class="ministry-name">Ban Quý Ông</div>
+        <img src="image/ban-tho-phuong.jpg" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:14px;">
+        <p style="margin-top:10px;font-size:.8rem;color:#6B6B6B;">👤 <strong style="color:#0E1E3A;">Nguyễn Văn A</strong> — Trưởng ban</p>
+        <div class="ministry-desc">Đào tạo những người đàn ông trở thành đầu gia đình và lãnh đạo thuộc linh vững mạnh.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THÔNG BÁO -->
+<section id="thong-bao" style="background:var(--cream); padding:96px 5%;">
+  <div class="section-header reveal">
+    <div class="section-label">Cập Nhật</div>
+    <h2 class="section-title">Thông Báo</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div style="max-width:750px; margin:0 auto; display:flex; flex-direction:column; gap:24px;">
+
+    <!-- THÔNG BÁO 1 -->
+    <div class="tb-card reveal">
+      <div class="tb-badge">Sắp diễn ra</div>
+      <h3 class="tb-title">Buổi Cầu Nguyện Đặc Biệt</h3>
+      <div class="tb-rows">
+        <div class="tb-row"><span class="tb-icon">🕐</span><span><strong>Thời gian:</strong> Thứ Sáu, 20/06/2025 – 7:00 CH</span></div>
+        <div class="tb-row"><span class="tb-icon">📍</span><span><strong>Địa điểm:</strong> Hội thánh Bết Lê Hem</span></div>
+        <div class="tb-row"><span class="tb-icon">📋</span><span><strong>Nội dung:</strong> Cầu nguyện cho đất nước và hội thánh</span></div>
+        <div class="tb-row"><span class="tb-icon">👥</span><span><strong>Người tham gia:</strong> Toàn thể hội chúng</span></div>
+        <div class="tb-row"><span class="tb-icon">💰</span><span><strong>Phí:</strong> Miễn phí</span></div>
+        <div class="tb-row"><span class="tb-icon">📞</span><span><strong>Đăng ký với:</strong> Mục sư [Tên] – 0901 234 567</span></div>
+      </div>
+    </div>
+
+    <!-- THÔNG BÁO 2 -->
+    <div class="tb-card reveal">
+      <div class="tb-badge" style="background:#E8F4EC;color:#2E7D4F;">Đang mở đăng ký</div>
+      <h3 class="tb-title">Trại Hè Thanh Thiếu Niên</h3>
+      <div class="tb-rows">
+        <div class="tb-row"><span class="tb-icon">🕐</span><span><strong>Thời gian:</strong> 05–07/07/2025</span></div>
+        <div class="tb-row"><span class="tb-icon">📍</span><span><strong>Địa điểm:</strong> [Địa điểm tổ chức]</span></div>
+        <div class="tb-row"><span class="tb-icon">📋</span><span><strong>Nội dung:</strong> Vui chơi, học Kinh Thánh, giao lưu</span></div>
+        <div class="tb-row"><span class="tb-icon">👥</span><span><strong>Người tham gia:</strong> Thanh thiếu niên 13–25 tuổi</span></div>
+        <div class="tb-row"><span class="tb-icon">💰</span><span><strong>Phí:</strong> 200.000đ / người</span></div>
+        <div class="tb-row"><span class="tb-icon">📞</span><span><strong>Đăng ký với:</strong> Anh/Chị [Tên] – [Số điện thoại]</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+  <!-- LIÊN HỆ -->
+  <section id="lien-he">
+    <div class="section-header reveal">
+      <div class="section-label">Kết Nối</div>
+      <h2 class="section-title">Liên Hệ & Bản Đồ</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-info reveal">
+        <h3>Thông Tin Liên Hệ</h3>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-text">
+            <strong>Địa Chỉ</strong>
+            <span>[Số nhà, Đường, Phường/Xã,<br>Quận/Huyện, Tỉnh/Thành phố]</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div class="contact-item-text">
+            <strong>Điện Thoại</strong>
+            <span>[Số điện thoại hội thánh]</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div class="contact-item-text">
+            <strong>Email</strong>
+            <span>[email@hoithanh.org]</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📘</div>
+          <div class="contact-item-text">
+            <strong>Facebook</strong>
+            <span>[Trang Facebook Hội Thánh]</span>
+          </div>
+        </div>
+          <a class="map-placeholder" href="https://www.google.com/maps/place/H%E1%BB%99i+Th%C3%A1nh+B%E1%BA%BFt-l%C3%AA-hem+(AG)/@10.321898,105.8879667,17z/data=!3m1!4b1!4m6!3m5!1s0x310a8532aac0c4b5:0x2452e1458926c233!8m2!3d10.3218927!4d105.8905416!16s%2Fg%2F11rr2wqx6f?entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" style="padding:0; overflow:hidden;">
+            <img src="image/map.png" alt="Bản đồ Hội Thánh Bết Lê Hem"
+              style="width:100%; height:100%; object-fit:cover; border-radius:12px; display:block;" />
+          </a>
+      </div>
+      <div class="contact-form reveal">
+        <h3>Gửi Tin Nhắn</h3>
+        <div class="form-group">
+          <label>Họ & Tên</label>
+          <input type="text" placeholder="Nguyễn Văn A" />
+        </div>
+        <div class="form-group">
+          <label>Số Điện Thoại</label>
+          <input type="tel" placeholder="0901 234 567" />
+        </div>
+        <div class="form-group">
+          <label>Chủ Đề</label>
+          <select>
+            <option>Muốn tìm hiểu về hội thánh</option>
+            <option>Tham dự thờ phượng lần đầu</option>
+            <option>Cầu nguyện & hỗ trợ thuộc linh</option>
+            <option>Khác</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Nội Dung</label>
+          <textarea placeholder="Chia sẻ điều bạn muốn nhắn..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="handleSubmit()">✦ Gửi Tin Nhắn</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Hội Thánh <em>Bết Lê Hem</em></div>
+    <p class="footer-tagline">"Đây là nơi Đức Chúa Trời ngự giữa dân Ngài"</p>
+    <div class="footer-divider"></div>
+    <div class="footer-links">
+      <a href="#gioi-thieu">Giới Thiệu</a>
+      <a href="#gio-tho-phuong">Giờ Thờ Phượng</a>
+      <a href="#ban-nganh">Ban Ngành</a>
+      <a href="#lien-he">Liên Hệ</a>
+    </div>
+    <p class="footer-copy">© 2025 Hội Thánh Bết Lê Hem – Hội Thánh Phúc Âm Ngũ Tuần Việt Nam. Bảo lưu mọi quyền.</p>
+  </footer>
+
+  <script>
+    // Navbar toggle
+    const toggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Stagger children in grids
+    document.querySelectorAll('.schedule-grid, .ministry-grid').forEach(grid => {
+      grid.querySelectorAll('.reveal').forEach((card, i) => {
+        card.style.transitionDelay = `${i * 80}ms`;
+      });
+    });
+
+    // Form submit
+    function handleSubmit() {
+      alert('Cảm ơn bạn đã liên hệ! Hội thánh sẽ sớm phản hồi. Nguyện Chúa ban phước cho bạn! 🙏');
+    }
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 100) current = s.id;
+      });
+      navLinks.querySelectorAll('a').forEach(a => {
+        a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--gold-light)' : '';
+      });
+    });
+  </script>
+</body>
+
+</html>
